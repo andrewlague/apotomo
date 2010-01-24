@@ -54,9 +54,10 @@ module TreeNode
   # The child is added as the last child in the current
   # list of children for the receiver node.
   def add(child)
-      raise "Child already added" if @childrenHash.has_key?(child.name)
+      #raise "Child already added" if @childrenHash.has_key?(child.name)
 
       @childrenHash[child.name]  = child
+      @children.delete_if{|c| c.name == child.name}
       @children << child
       child.parent = self
       return child
